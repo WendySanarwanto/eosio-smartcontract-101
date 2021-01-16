@@ -1,6 +1,6 @@
 # eosio-smartcontract-101
 
-An EOSIO project artifact of [![Smartcontract 101](https://training.eos.io/courses/take/smart-contracts-101)] course's project. 
+An EOSIO project artifact of [Smartcontract 101](https://training.eos.io/courses/take/smart-contracts-101) course's project. 
 
 # Setup
 
