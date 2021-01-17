@@ -3,8 +3,10 @@
         {
             "name": "Linux",
             "includePath": [
+                "/usr/opt/eosio.cdt/1.7.0/include/boost/**",
                 "/usr/opt/eosio.cdt/1.7.0/include/**",
                 "/usr/opt/eosio.cdt/1.7.0/include/eosiolib/contracts",
+                "/usr/opt/eosio.cdt/1.7.0/include/eosiolib/core/eosio",
                 "${workspaceFolder}/**"
             ],
             "defines": [
