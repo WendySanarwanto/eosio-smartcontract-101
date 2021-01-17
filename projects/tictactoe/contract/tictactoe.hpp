@@ -15,7 +15,7 @@ CONTRACT tictactoe : public contract {
 
     typedef multi_index<name("games"), game> games_table;
 
-    ACTION welcome(name host, name opponent);
-    ACTION create( const name &challenger, name &host);
-    ACTION close( const name &challenger, name &host);
+    ACTION welcome( const name &host, const name &opponent );
+    ACTION create( const name &challenger, const name &host );
+    ACTION close( const name &challenger, const name &host );
 };

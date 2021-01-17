@@ -1,6 +1,6 @@
 #include <tictactoe.hpp>
 
-ACTION tictactoe::welcome(name host, name opponent) {
+ACTION tictactoe::welcome( const name &host, const name &opponent ) {
   // welcome action can only be taken by contract account
   require_auth(get_self());
 
@@ -8,7 +8,7 @@ ACTION tictactoe::welcome(name host, name opponent) {
   print( "Welcome, challengers ", host, " and ", opponent, " !");
 };
 
-ACTION tictactoe::create( const name &challenger, name &host) {
+ACTION tictactoe::create( const name &challenger, const name &host ) {
   // Ensure the host is authorised.
   check(has_auth(host), "Host is not authorized.");
   
@@ -36,7 +36,7 @@ ACTION tictactoe::create( const name &challenger, name &host) {
   print("A new game has been created for host: '", host, "' and challenger: '", challenger, "'");
 }
 
-ACTION tictactoe::close( const name &challenger, name &host) {
+ACTION tictactoe::close( const name &challenger, const name &host) {
   // Ensure the host is authorised.
   check(has_auth(host), "Host is not authorized.");
 
