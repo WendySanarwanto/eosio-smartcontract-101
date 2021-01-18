@@ -2,6 +2,23 @@
   "files.associations": {
     "__hash_table": "cpp",
     "algorithm": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "__tuple": "cpp",
+    "array": "cpp",
+    "functional": "cpp",
+    "iterator": "cpp",
+    "optional": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "limits": "cpp",
+    "list": "cpp",
+    "map": "cpp",
+    "memory": "cpp",
+    "queue": "cpp",
+    "set": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp",
+    "vector": "cpp"
   }
 }
