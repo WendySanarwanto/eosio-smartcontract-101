@@ -19,6 +19,9 @@
     "tuple": "cpp",
     "type_traits": "cpp",
     "utility": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "bitset": "cpp",
+    "__locale": "cpp",
+    "locale": "cpp"
   }
 }

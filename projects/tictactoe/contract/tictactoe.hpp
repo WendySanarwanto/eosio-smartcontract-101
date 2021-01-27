@@ -1,6 +1,7 @@
 #include <eosio/eosio.hpp>
 
 using namespace eosio;
+using namespace std;
 
 CONTRACT tictactoe : public contract {
   public:
@@ -9,6 +10,16 @@ CONTRACT tictactoe : public contract {
     TABLE game {
       name host;
       name opponent;
+      name turn;
+      name winner = WINNER_NONE;
+      vector<uint8_t> board;
+
+      static constexpr name WINNER_NONE = name("none");
+      static constexpr name WINNER_draw = name("draw");
+      static constexpr uint8_t BOARD_WIDTH = 3;
+      static constexpr uint8_t BOARD_HEIGHT = BOARD_WIDTH;
+
+      game(): board(BOARD_WIDTH * BOARD_HEIGHT, 0) {};
 
       uint64_t primary_key() const { return host.value; };
       uint64_t by_secondary() const { return opponent.value; };
