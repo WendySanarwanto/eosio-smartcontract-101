@@ -20,10 +20,17 @@ ACTION tictactoe::create( const name &challenger, const name &host ) {
 
   // Ensure that there are no any games played by challenger or host
   auto hostItr = _games.find(host.value);
-  check( hostItr == _games.end(), "There is a game played by specified host." );
-  
+  check( hostItr == _games.end(), "There is a game played by specified host." );  
+
   auto opponentIdx = _games.get_index<name("opponentid")>();
-  auto challengerItr = opponentIdx.find(challenger.value);
+  auto challengerItr = opponentIdx.find(host.value);
+  check( challengerItr == opponentIdx.end(), "There is a game played by specified host as challenger." );
+
+  hostItr = _games.find(challenger.value);
+  check( hostItr == _games.end(), "There is a game played by specified challenger as host." );   
+
+  opponentIdx = _games.get_index<name("opponentid")>();
+  challengerItr = opponentIdx.find(challenger.value);
   check( challengerItr == opponentIdx.end(), "There is a game played by specified challenger." );  
   
   // both challenger & host do not have any running game. Let's create a game for them.
