@@ -22,14 +22,16 @@ ACTION tictactoe::create( const name &challenger, const name &host ) {
   auto hostItr = _games.find(host.value);
   check( hostItr == _games.end(), "There is a game played by specified host." );
   
-  auto secIdx = _games.get_index<name("secid")>();
-  auto challengerItr = secIdx.find(challenger.value);
-  check( challengerItr == secIdx.end(), "There is a game played by specified challenger." );
+  auto opponentIdx = _games.get_index<name("opponentid")>();
+  auto challengerItr = opponentIdx.find(challenger.value);
+  check( challengerItr == opponentIdx.end(), "There is a game played by specified challenger." );  
   
   // both challenger & host do not have any running game. Let's create a game for them.
   _games.emplace(get_self(), [&](game& new_game){
     new_game.host = host;
     new_game.opponent = challenger;
+    // new_game.winner = game::WINNER_NONE;
+    // new_game.turn = game::TURN_NONE;
   });
   print("A new game has been created for host: '", host, "' and challenger: '", challenger, "'");
 }
@@ -46,12 +48,12 @@ ACTION tictactoe::close( const name &challenger, const name &host) {
   auto hostItr = _games.find(host.value);  
   check(hostItr != _games.end(), "There is no game hosted by specified host.");
 
-  auto secIdx = _games.get_index<name("secid")>();
-  auto challengerItr = secIdx.begin();
-  while(challengerItr != secIdx.end())  {
+  auto opponentIdx = _games.get_index<name("opponentid")>();
+  auto challengerItr = opponentIdx.begin();
+  while(challengerItr != opponentIdx.end())  {
     if ( (challengerItr->opponent == challenger) && (challengerItr->host == host)) {
       print ("Found a game hosted by '", host, "' and played by '", challenger ,"'. Closing the game now.");      
-      secIdx.erase(challengerItr);
+      opponentIdx.erase(challengerItr);
       return;
     }
     ++challengerItr;
